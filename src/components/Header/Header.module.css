@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    text-decoration: none;
     transition: 0.3s;
     background-color: #493f2e;
     border-radius: 16px;
@@ -36,6 +37,7 @@
     color: #493f2e;
     background-color: #fff;
     display: flex;
+    font-weight: 400;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -46,6 +48,7 @@
     display: flex;
     transition: 0.3s;
     align-items: center;
+    text-decoration: none;
     justify-content: center;
     gap: 10px;
     cursor: pointer;
@@ -63,6 +66,7 @@
 .Todo__Header__DoneLength {
     width: 20px;
     height: 20px;
+    font-weight: 400;
     color: #493f2e;
     background-color: #fff;
     display: flex;
@@ -78,6 +82,7 @@
     justify-content: center;
     cursor: pointer;
     gap: 6px;
+    text-decoration: none;
     transition: 0.3s;
     background-color: #dd5f55;
     border-radius: 16px;
@@ -88,6 +93,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     cursor: pointer;
     gap: 6px;
     transition: 0.3s;

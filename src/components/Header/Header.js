@@ -26,12 +26,15 @@ export default function Header({
         console.log(done);
     }, [todos]);
     const activeButton = (e) => {
+        console.log(e);
+        e.preventDefault();
         setCurrentActive(e.target.name);
     };
     return (
         <div className={styles.Todo__Header}>
             <div className={styles.Todo__Header__Left}>
-                <button
+                <a
+                    href="#"
                     name="active"
                     onClick={(e) => {
                         activeButton(e);
@@ -42,14 +45,16 @@ export default function Header({
                             : styles.Todo__Header__DoneButton
                     }
                 >
-                    <div className={styles.Todo__Header__TodoText}>To do</div>
-                    <div className={styles.Todo__Header__TodoLength}>
+                    <span className={styles.Todo__Header__TodoText}>To do</span>
+                    <strong className={styles.Todo__Header__TodoLength}>
                         {active.length}
-                    </div>
-                </button>
-                <button
+                    </strong>
+                </a>
+                <a
+                    href="#"
                     name="done"
                     onClick={(e) => {
+                        console.log("fasfa");
                         activeButton(e);
                     }}
                     className={
@@ -58,17 +63,21 @@ export default function Header({
                             : styles.Todo__Header__DoneButton
                     }
                 >
-                    <div className={styles.Todo__Header__DoneText}>Done</div>
-                    <div id="done" className={styles.Todo__Header__DoneLength}>
+                    <span className={styles.Todo__Header__DoneText}>Done</span>
+                    <strong
+                        id="done"
+                        className={styles.Todo__Header__DoneLength}
+                    >
                         {done.length}
-                    </div>
-                </button>
+                    </strong>
+                </a>
             </div>
-            <button
+            <a
                 onClick={(e) => {
                     activeButton(e);
                 }}
                 name="delete"
+                href="#"
                 className={
                     currentActive === "delete"
                         ? styles.Todo__Header__ActiveDeleteButton
@@ -78,8 +87,8 @@ export default function Header({
                 <figure className={styles.Todo__Header__DeletedIcon}>
                     <DeletedBut />
                 </figure>
-                <div className={styles.Todo__Header___Delete}>Deleted</div>
-            </button>
+                <span className={styles.Todo__Header___Delete}>Deleted</span>
+            </a>
         </div>
     );
 }

@@ -74,7 +74,7 @@ export default function Todo({
                         name={todo.id}
                     />
                 )}
-                <label for={todo.id}></label>
+                <label onClick={activate} for={todo.id}></label>
                 <label
                     onClick={activate}
                     className={styles.Todo__Lists__Text}

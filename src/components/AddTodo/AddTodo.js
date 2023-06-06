@@ -21,6 +21,7 @@ export default function AddTodo({
     }, [todos]);
 
     function sub(e) {
+        console.log("fasfa");
         e.preventDefault();
         if (inputValue !== "") {
             const newTodo = {
@@ -41,6 +42,9 @@ export default function AddTodo({
                 placeholder="New Task"
                 required
                 value={inputValue}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") sub(e);
+                }}
                 onChange={AddTodo}
                 className={styles.Todo__CreateTodo__input}
             />
