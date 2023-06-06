@@ -1,0 +1,68 @@
+.Todo__Lists {
+    list-style: none;
+    margin-bottom: 55px;
+}
+
+.Todo__Lists__List {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    background: #ffffff;
+    margin-bottom: 10px;
+    border: 1px solid #f3ede2;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.Todo__Lists__Left {
+    display: flex;
+    color: #493f2e;
+    gap: 14px;
+}
+
+.Todo__Lists__Checkbox[type="checkbox"] {
+    display: none;
+}
+
+.Todo__Lists__Checkbox[type="checkbox"] + label {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #65b985;
+    border-radius: 50%;
+}
+
+.Todo__Lists__Checkbox[type="checkbox"] + label::before {
+    position: relative;
+    display: block;
+    z-index: 4;
+    content: "";
+    left: 50%;
+    top: 46%;
+    width: 4px;
+    height: 8px;
+    border: solid rgb(255, 255, 255);
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -moz-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+.Todo__Lists__Checkbox[type="checkbox"]:checked + label {
+    background-color: #65b985;
+}
+.Todo__Lists__Checkbox[type="checkbox"]:checked + label::before {
+    opacity: 1;
+}
+.Todo__Lists__DeleteIcon {
+    display: none;
+    transition: 0.3s;
+}
+.Todo__Lists__List:hover .Todo__Lists__DeleteIcon {
+    display: block;
+}
+.Todo__Lists__DeleteIcon:hover {
+    opacity: 0.8;
+}

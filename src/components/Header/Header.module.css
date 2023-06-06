@@ -1,0 +1,97 @@
+.Todo__Header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.Todo__Header__Left {
+    display: flex;
+    gap: 10px;
+}
+
+.Todo__Header__TodoButton {
+    padding: 6px 6px 6px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+    background-color: #493f2e;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.Todo__Header__TodoText,
+.Todo__Header__DoneText,
+.Todo__Header___Delete {
+    font-size: 12px;
+    font-weight: 400;
+}
+.Todo__Header__TodoLength {
+    width: 20px;
+    height: 20px;
+    color: #493f2e;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.Todo__Header__DoneButton {
+    padding: 6px 6px 6px 16px;
+    display: flex;
+    transition: 0.3s;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    background-color: #fcf6ec;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    color: #493f2e;
+}
+/* .Todo__Header__DoneText {
+    font-size: 12px;
+    font-weight: 400;
+} */
+
+.Todo__Header__DoneLength {
+    width: 20px;
+    height: 20px;
+    color: #493f2e;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.Todo__Header__DeleteButton {
+    padding: 10px 16px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 6px;
+    transition: 0.3s;
+    background-color: #dd5f55;
+    border-radius: 16px;
+    color: #fff;
+}
+
+.Todo__Header__DeleteButton:hover,
+.Todo__Header__DoneButton:hover,
+.Todo__Header__TodoButton:hover {
+    opacity: 0.8;
+}
+
+.Todo__Header__DeletedIcon {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
