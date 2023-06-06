@@ -1,18 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./AddTodo.module.css";
 
-export default function AddTodo() {
+export default function AddTodo({
+    inputValue,
+    setInputValue,
+    todos,
+    setTodos,
+}) {
+    function AddTodo(event) {
+        setInputValue(event.target.value);
+    }
+    useEffect(() => {
+        const storedTodos = localStorage.getItem("todos");
+        if (storedTodos) {
+            setTodos(JSON.parse(storedTodos));
+        }
+    }, []);
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
+
+    function sub(e) {
+        e.preventDefault();
+        if (inputValue !== "") {
+            const newTodo = {
+                id: Math.random() * 1000,
+                text: inputValue,
+                complited: false,
+            };
+            setTodos((prevTodos) => [...prevTodos, newTodo]);
+        }
+        setInputValue("");
+    }
     return (
-        <div className={styles.Todo__CreateTodo}>
+        <form className={styles.Todo__CreateTodo}>
             <input
                 type="text"
                 placeholder="New Task"
+                required
+                onChange={AddTodo}
                 className={styles.Todo__CreateTodo__input}
             />
-            <div className={styles.Todo__CreateTodo__AddTodo}>
+            <div onClick={sub} className={styles.Todo__CreateTodo__AddTodo}>
                 <AddButt />
             </div>
-        </div>
+        </form>
     );
 }
 

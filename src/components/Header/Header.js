@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 
-export default function Header() {
+export default function Header({ todos, setTodos, inputValue }) {
     const [currentActive, setCurrentActive] = useState("");
+    const done = [];
+    const active = [];
+    useEffect(() => {
+        todos.map((todo) => {
+            todo.complited ? active.push(todo) : done.push(todo);
+        });
+    }, [todos]);
     const activeButton = (e) => {
         if (currentActive) {
             currentActive.style.background = "#fcf6ec";
@@ -22,7 +29,9 @@ export default function Header() {
                     className={styles.Todo__Header__DoneButton}
                 >
                     <div className={styles.Todo__Header__TodoText}>To do</div>
-                    <div className={styles.Todo__Header__TodoLength}>3</div>
+                    <div className={styles.Todo__Header__TodoLength}>
+                        {todos.length}
+                    </div>
                 </button>
                 <button
                     onClick={(e) => {
