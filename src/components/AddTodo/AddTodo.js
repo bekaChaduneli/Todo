@@ -26,7 +26,9 @@ export default function AddTodo({
             const newTodo = {
                 id: Math.random() * 1000,
                 text: inputValue,
-                complited: false,
+                complited: true,
+                deleted: false,
+                remove: false,
             };
             setTodos((prevTodos) => [...prevTodos, newTodo]);
         }
@@ -38,6 +40,7 @@ export default function AddTodo({
                 type="text"
                 placeholder="New Task"
                 required
+                value={inputValue}
                 onChange={AddTodo}
                 className={styles.Todo__CreateTodo__input}
             />

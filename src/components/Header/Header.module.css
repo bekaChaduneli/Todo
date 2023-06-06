@@ -83,6 +83,18 @@
     border-radius: 16px;
     color: #fff;
 }
+.Todo__Header__ActiveDeleteButton {
+    padding: 10px 16px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 6px;
+    transition: 0.3s;
+    background-color: green;
+    border-radius: 16px;
+    color: #fff;
+}
 
 .Todo__Header__DeleteButton:hover,
 .Todo__Header__DoneButton:hover,

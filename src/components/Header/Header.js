@@ -1,49 +1,80 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 
-export default function Header({ todos, setTodos, inputValue }) {
-    const [currentActive, setCurrentActive] = useState("");
-    const done = [];
-    const active = [];
+export default function Header({
+    todos,
+    setTodos,
+    active,
+    setActive,
+    done,
+    setDone,
+    inputValue,
+    currentActive,
+    setCurrentActive,
+}) {
     useEffect(() => {
+        setActive([]);
+        setDone([]);
         todos.map((todo) => {
-            todo.complited ? active.push(todo) : done.push(todo);
+            todo.complited
+                ? todo.deleted === false &&
+                  setActive((prevState) => [...prevState, todo])
+                : todo.deleted === false &&
+                  setDone((prevState) => [...prevState, todo]);
         });
+        console.log(active);
+        console.log(done);
     }, [todos]);
     const activeButton = (e) => {
-        if (currentActive) {
-            currentActive.style.background = "#fcf6ec";
-            currentActive.style.color = "#493f2e";
-        }
-        setCurrentActive(e.target);
-        e.target.style.background = "#493f2e";
-        e.target.style.color = "white";
+        setCurrentActive(e.target.name);
     };
     return (
         <div className={styles.Todo__Header}>
             <div className={styles.Todo__Header__Left}>
                 <button
+                    name="active"
                     onClick={(e) => {
                         activeButton(e);
                     }}
-                    className={styles.Todo__Header__DoneButton}
+                    className={
+                        currentActive === "active"
+                            ? styles.Todo__Header__TodoButton
+                            : styles.Todo__Header__DoneButton
+                    }
                 >
                     <div className={styles.Todo__Header__TodoText}>To do</div>
                     <div className={styles.Todo__Header__TodoLength}>
-                        {todos.length}
+                        {active.length}
                     </div>
                 </button>
                 <button
+                    name="done"
                     onClick={(e) => {
                         activeButton(e);
                     }}
-                    className={styles.Todo__Header__DoneButton}
+                    className={
+                        currentActive === "done"
+                            ? styles.Todo__Header__TodoButton
+                            : styles.Todo__Header__DoneButton
+                    }
                 >
                     <div className={styles.Todo__Header__DoneText}>Done</div>
-                    <div className={styles.Todo__Header__DoneLength}>1</div>
+                    <div id="done" className={styles.Todo__Header__DoneLength}>
+                        {done.length}
+                    </div>
                 </button>
             </div>
-            <button className={styles.Todo__Header__DeleteButton}>
+            <button
+                onClick={(e) => {
+                    activeButton(e);
+                }}
+                name="delete"
+                className={
+                    currentActive === "delete"
+                        ? styles.Todo__Header__ActiveDeleteButton
+                        : styles.Todo__Header__DeleteButton
+                }
+            >
                 <figure className={styles.Todo__Header__DeletedIcon}>
                     <DeletedBut />
                 </figure>

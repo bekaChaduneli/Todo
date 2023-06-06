@@ -1,24 +1,59 @@
 import React from "react";
 import styles from "./Todo.module.css";
-export default function Todo({ todos, todo, todoText, setTodos }) {
-    console.log(todo);
+export default function Todo({
+    todos,
+    active,
+    setActive,
+    done,
+    setDone,
+    todo,
+    todoText,
+    setTodos,
+}) {
+    // console.log(todo);
     const activate = (e) => {
-        // console.log(e.target.control);
         setTodos(
             todos.map((el) => {
-                if (e.target.control.id === el.id) {
-                    return {
-                        ...el,
-                        complited: el.complited,
-                    };
+                if (todo === el) {
+                    if (el.complited === true) {
+                        return {
+                            ...el,
+                            complited: false,
+                        };
+                    } else if (el.complited === false) {
+                        return {
+                            ...el,
+                            complited: true,
+                        };
+                    }
                 }
                 return el;
             })
         );
-        console.log(todos);
+        // localStorage.setItem("todos", JSON.stringify(todos));
     };
     const deleteHandler = (id) => {
-        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+        setTodos(
+            todos.map((el) => {
+                if (todo === el) {
+                    if (el.deleted === false) {
+                        return {
+                            ...el,
+                            deleted: true,
+                        };
+                    } else if (el.deleted === true) {
+                        return {
+                            ...el,
+                            remove: true,
+                        };
+                    }
+                }
+                return el;
+            })
+        );
+        setTodos((prevTodos) =>
+            prevTodos.filter((todo) => todo.remove !== true)
+        );
     };
     return (
         <li number={todo.id} className={styles.Todo__Lists__List}>
