@@ -111,7 +111,5 @@
 }
 
 .Todo__Header__DeletedIcon {
-    width: 14px;
-    height: 14px;
     cursor: pointer;
 }
