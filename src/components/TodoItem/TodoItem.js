@@ -15,10 +15,11 @@ export default function TodoItem({
     return (
         <ul className={styles.Todo__Lists}>
             {currentActive === "active"
-                ? todos.map((todo) => {
+                ? todos.map((todo, index) => {
                       if (todo.complited && todo.deleted === false) {
                           return (
                               <Todo
+                                  key={index}
                                   active={active}
                                   setActive={setActive}
                                   done={done}
@@ -32,11 +33,12 @@ export default function TodoItem({
                       }
                   })
                 : currentActive === "done"
-                ? todos.map((todo) => {
+                ? todos.map((todo, index) => {
                       if (todo.complited === false && todo.deleted === false) {
                           return (
                               <Todo
                                   active={active}
+                                  key={index}
                                   setActive={setActive}
                                   done={done}
                                   setDone={setDone}
@@ -49,12 +51,13 @@ export default function TodoItem({
                       }
                   })
                 : currentActive === "delete" &&
-                  todos.map((todo) => {
+                  todos.map((todo, index) => {
                       if (todo.deleted) {
                           return (
                               <Todo
                                   active={active}
                                   setActive={setActive}
+                                  key={index}
                                   done={done}
                                   setDone={setDone}
                                   setTodos={setTodos}
